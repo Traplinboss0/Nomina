@@ -1,0 +1,9 @@
+Bienvenido usuario 
+###### Nominas ##### 
+Empleado: NicolasMoreno
+Documento: 1001296924
+Su salario es: 100
+Sus dias trabajados son: 15
+Su descuento por pension es: 2
+Su descuento por salud es: 2
+Su salario neto por trabajar 15dias es de 58591
