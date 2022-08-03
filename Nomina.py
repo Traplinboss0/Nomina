@@ -18,11 +18,11 @@ while not Respuesta != "s":
         Apellidos = input("Por favor digite un valor valido\n")
 
     SalarioBase = input("Digite su Salario Base \n")
-    while not re.findall("\d",SalarioBase):
+    while re.findall("\D",SalarioBase):
         SalarioBase = input("Por favor digite un valor valido\n")
 
     DT = input("Digite los dias laborados \n")
-    while not re.findall("\d",DT):
+    while re.findall("\D",DT):
         DT = input("Por favor digite un valor valido\n")
 
     transporte = 0
@@ -38,41 +38,50 @@ while not Respuesta != "s":
     Nomina = int(Nomina+transporte )
 
 
-    YN = input("sun datos son: \nNombre: " + Nombre  + " "+ Apellidos + "\nDocumento: " + Documento + "\nSalario Base: " + SalarioBase + "\nDias Trabajados: " + DT +  "\nDigite s/n para confirmar o cancelar")
-    while re.findall("[n]", YN ):
-        print("Vuelva a Digitar sus datos por favor \n")
-        Documento = input("Digite su numero de identificacion \n")
-        while not re.findall("\d", Documento):
-            Documento = input("Por favor digite un valor valido\n")
+    YN = input("sun datos son: \nNombre: " + Nombre  + " "+ Apellidos + "\nDocumento: " + Documento + "\nSalario Base: " + SalarioBase + "\nDias Trabajados: " + DT +  "\nDigite s/n para confirmar o cancelar: \n")
+    bander = True
+    while bander == True:
+        if (YN == "n"):
+                print("Vuelva a Digitar sus datos por favor \n")
+                Documento = input("Digite su numero de identificacion \n")
+                while not re.findall("\d", Documento):
+                    Documento = input("Por favor digite un valor valido\n")
 
-        Nombre = input("Digite su Nombre \n")
-        while not re.findall("\w", Nombre):
-            Nombre = input("Por favor digite un valor valido\n")
+                Nombre = input("Digite su Nombre \n")
+                while not re.findall("\w", Nombre):
+                    Nombre = input("Por favor digite un valor valido\n")
 
-        Apellidos = input("Digite su Apellido \n")
-        while not re.findall("\w", Apellidos):
-            Apellidos = input("Por favor digite un valor valido\n")
+                Apellidos = input("Digite su Apellido \n")
+                while not re.findall("\w", Apellidos):
+                    Apellidos = input("Por favor digite un valor valido\n")
 
-        SalarioBase = input("Digite su Salario Base \n")
-        while not re.findall("\d", SalarioBase):
-            SalarioBase = input("Por favor digite un valor valido\n")
+                SalarioBase = input("Digite su Salario Base \n")
+                while re.findall("\D", SalarioBase):
+                    SalarioBase = input("Por favor digite un valor valido\n")
 
-        DT = input("Digite los dias laborados \n")
-        while not re.findall("\d", DT):
-            DT = input("Por favor digite un valor valido\n")
+                DT = input("Digite los dias laborados \n")
+                while re.findall("\D", DT):
+                    DT = input("Por favor digite un valor valido\n")
 
-        YN = input("Los datos digitados son correctos s/n")
+                YN = input("Los datos digitados son correctos s/n")
+                if YN == "s":
+                 bander = False
+                elif(bander == "n"):
+                  bander = True
+                else:
+                  print("Digite un dato valido")
 
-
-
-
-
+        elif (YN == "s"):
+            bander = False
+        else:
+            print("Digite un valor valido")
+            bander = True
 
     print("Su descuento por pension es:", pension)
     print("Su descuento por salud es:", salud)
     print("Su subsidio por transorte es de ", transporte)
     print("Su salario neto por trabajar", DT, "dias es de ", Nomina)
-    Respuesta = input("Desea continuar con otro proceso de nomina s/n \n")
+    Respuesta = input("Desea continuar con otro proceso de nomina s/n: \n")
     file = open("Nomina.txt", "a")
     file.write("Bienvenido usuario \n")
     file.write("###### Nominas ##### \n")
@@ -84,6 +93,8 @@ while not Respuesta != "s":
     file.write("Su descuento por salud es: " + str(salud) + "\n")
     file.write("Su salario neto por trabajar " + str(DT) + "dias es de " + str(Nomina) + "\n")
     file.close()
+
+
 
 
 
